@@ -12,7 +12,7 @@ export default function MemeCard({ meme }: MemeCardProps) {
     <Card className="max-w-sm w-full mx-auto">
       <CardHeader className="flex flex-col items-start gap-2 px-4 pt-4">
         <h4 className="font-bold text-large">{title}</h4>
-        <p className="text-default-500">👍 {likes}</p>
+        <p className="text-default-500">👍 Likes {likes}</p>
       </CardHeader>
       <CardBody className="overflow-visible px-4 py-2">
         <Image

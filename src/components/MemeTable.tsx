@@ -28,7 +28,7 @@ export default function MemeTable({ memes, onEdit }: MemeTableProps) {
         <TableColumn>LIKES</TableColumn>
         <TableColumn>ACTIONS</TableColumn>
       </TableHeader>
-      <TableBody>
+      <TableBody emptyContent={"No rows to display."}>
         {memes.map((meme) => (
           <TableRow key={meme.id}>
             <TableCell>{meme.id}</TableCell>
