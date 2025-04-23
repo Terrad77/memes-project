@@ -1,15 +1,20 @@
+import { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
   Link,
 } from "@heroui/react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Logo } from "./Logo";
 
-export default function AppNavbar() {
+const AppNavbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
   const navLinks = [
     { name: "Table", href: "/table" },
     { name: "List", href: "/list" },
@@ -18,64 +23,83 @@ export default function AppNavbar() {
   return (
     <Navbar
       maxWidth="full"
-      classNames={{
-        item: [
-          "flex",
-          "relative",
-          "h-full",
-          "items-center",
-          "data-[active=true]:after:content-['']",
-          "data-[active=true]:after:absolute",
-          "data-[active=true]:after:bottom-0",
-          "data-[active=true]:after:left-0",
-          "data-[active=true]:after:right-0",
-          "data-[active=true]:after:h-[2px]",
-          "data-[active=true]:after:rounded-[2px]",
-          "data-[active=true]:after:bg-primary",
-        ],
-      }}
+      isBordered
+      isBlurred
+      shouldHideOnScroll
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
     >
-      <NavbarBrand className="text-red-800">
+      {/* Brand & Logo*/}
+      <NavbarBrand>
         <div className="flex items-center gap-2">
-          <p className="flex text-lg flex-row font-bold md:text-xl">
-            <span className="flex flex-col text-primary">
-              <span className="flex justify-center">Meme</span>¯\_(ツ)_/¯
-            </span>{" "}
-            Guide
+          <span className="text-xl text-primary">¯\_(ツ)_/¯</span>
+          <p className="text-lg font-bold md:text-xl">
+            <span className="text-primary">Meme</span> Guide
           </p>
         </div>
       </NavbarBrand>
-      <NavbarContent className="hidden md:flex gap-4" justify="center">
+
+      {/* Desktop menu - visibile on screens >= md  */}
+      <NavbarContent className="hidden md:flex gap-6" justify="center">
         {navLinks.map((link) => (
           <NavbarItem
-            key={link.name}
-            isActive={
-              location.pathname === link.href ||
-              (link.href === "/table" && location.pathname === "/")
-            }
+            key={link.href}
+            isActive={location.pathname === link.href}
           >
             <Link
               as={NavLink}
               to={link.href}
-              color={
-                location.pathname === link.href ||
-                (link.href === "/table" && location.pathname === "/")
-                  ? "primary"
-                  : "foreground"
-              }
-              className={
-                location.pathname === link.href ||
-                (link.href === "/table" && location.pathname === "/")
-                  ? "font-bold"
-                  : ""
-              }
+              color="foreground"
+              className="hover:text-primary transition-colors"
               end
             >
-              Table{link.name}
+              {link.name}
             </Link>
           </NavbarItem>
         ))}
       </NavbarContent>
+
+      {/* Button mobile menu - visibile on screens <= md   */}
+      <NavbarContent className="md:hidden" justify="end">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="
+            w-12 h-12           
+            flex items-center    
+            justify-center
+            -mr-2               
+            hover:bg-default-100
+            rounded-full        
+            transition-all            
+          "
+        />
+      </NavbarContent>
+
+      {/* Mobile dropdown menu */}
+      <NavbarMenu className="!left-auto !right-0 !w-auto !h-[fit-content] max-h-[60vh] min-w-[200px] py-2 overflow-y-auto shadow-lg">
+        <div className="w-full h-auto flex flex-col items-end pr-4 py-2 space-y-1">
+          {navLinks.map((link) => (
+            <NavbarMenuItem
+              key={link.href}
+              isActive={location.pathname === link.href}
+              className="w-full flex justify-end"
+            >
+              <Link
+                as={NavLink}
+                to={link.href}
+                size="lg"
+                className="text-right w-full px-4 py-3 hover:bg-default-100 rounded-lg transition-colors"
+                end
+                onPress={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </div>
+      </NavbarMenu>
     </Navbar>
   );
-}
+};
+
+export default AppNavbar;

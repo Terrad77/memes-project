@@ -3,14 +3,14 @@ import { Meme } from "../types/memeTypes";
 export const defaultMemes: Meme[] = [
   {
     id: 1,
-    title: "Doge",
-    image: "https://i.imgur.com/9bXqR.jpg",
+    title: "My Emilia cosplay from Re:Zero",
+    image: "https://i.imgur.com/cWBWpCo.jpeg",
     likes: Math.floor(Math.random() * 100),
   },
   {
     id: 2,
     title: "Distracted Boyfriend",
-    image: "https://i.imgur.com/6R5p9.jpg",
+    image: "https://i.imgur.com/6R5p9.jpeg",
     likes: Math.floor(Math.random() * 100),
   },
   {

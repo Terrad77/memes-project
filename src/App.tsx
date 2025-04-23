@@ -7,13 +7,20 @@ import { HeroUIProvider } from "@heroui/react";
 export default function App() {
   return (
     <HeroUIProvider>
-      <div className="max-w-5xl mx-auto p-4">
+      <div className="flex flex-col min-h-screen">
         <AppNavbar />
-        <Routes>
-          <Route path="/table" element={<MemeTablePage />} />
-          <Route path="/list" element={<MemeListPage />} />
-          <Route path="*" element={<Navigate to="/table" />} />
-        </Routes>
+
+        <main className="flex-1 p-4 md:p-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <Routes>
+              <Route path="/table" element={<MemeTablePage />} />
+              <Route path="/list" element={<MemeListPage />} />
+              <Route path="*" element={<Navigate to="/table" replace />} />
+            </Routes>
+          </div>
+        </main>
+
+        {/* Можно добавить футер */}
       </div>
     </HeroUIProvider>
   );
