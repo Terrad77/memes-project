@@ -25,6 +25,7 @@ export default function MemeTable({ memes, onEdit }: MemeTableProps) {
       <TableHeader>
         <TableColumn>ID</TableColumn>
         <TableColumn>TITLE</TableColumn>
+        <TableColumn>IMAGE URL</TableColumn>
         <TableColumn>LIKES</TableColumn>
         <TableColumn>ACTIONS</TableColumn>
       </TableHeader>
@@ -33,6 +34,7 @@ export default function MemeTable({ memes, onEdit }: MemeTableProps) {
           <TableRow key={meme.id}>
             <TableCell>{meme.id}</TableCell>
             <TableCell>{meme.title}</TableCell>
+            <TableCell>{meme.image}</TableCell>
             <TableCell>{meme.likes}</TableCell>
             <TableCell>
               <Button

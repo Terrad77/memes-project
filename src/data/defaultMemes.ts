@@ -3,7 +3,7 @@ import { Meme } from "../types/memeTypes";
 export const defaultMemes: Meme[] = [
   {
     id: 1,
-    title: "My Emilia cosplay from Re:Zero",
+    title: "My Emilia cosplay",
     image: "https://i.imgur.com/cWBWpCo.jpeg",
     likes: Math.floor(Math.random() * 100),
   },
