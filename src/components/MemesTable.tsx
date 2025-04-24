@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import {
   Table,
   TableHeader,
@@ -7,7 +8,6 @@ import {
   TableCell,
   Button,
 } from "@heroui/react";
-
 import { Meme } from "../types/memeTypes";
 
 interface MemeTableProps {

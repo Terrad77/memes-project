@@ -10,7 +10,12 @@ export default {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "auto-fill-min": "repeat(auto-fill, minmax(250px, 1fr))",
+        "auto-fit-min": "repeat(auto-fit, minmax(250px, 1fr))",
+      },
+    },
   },
   darkMode: "class",
   plugins: [heroui()],
