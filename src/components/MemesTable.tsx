@@ -16,7 +16,7 @@ interface MemeTableProps {
   onSave: (updatedMeme: Meme) => void;
 }
 
-export default function MemeTable({ memes, onSave }: MemeTableProps) {
+export default function MemesTable({ memes, onSave }: MemeTableProps) {
   const [editingMeme, setEditingMeme] = useState<Meme | null>(null);
 
   const handleEditClick = (meme: Meme) => {
@@ -27,14 +27,14 @@ export default function MemeTable({ memes, onSave }: MemeTableProps) {
     setEditingMeme(null);
   };
 
-  if (!memes || memes.length === 0) {
+  if (memes.length === 0) {
     return (
       <div className="text-center text-gray-500 py-4">No memes available</div>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <>
       <Table aria-label="Memes table" className="w-full">
         <TableHeader>
           <TableColumn>ID</TableColumn>
@@ -65,14 +65,11 @@ export default function MemeTable({ memes, onSave }: MemeTableProps) {
         </TableBody>
       </Table>
 
-      {editingMeme && (
-        <EditModal
-          meme={editingMeme}
-          isOpen={true}
-          onClose={handleModalClose}
-          onSave={onSave}
-        />
-      )}
-    </div>
+      <EditModal
+        meme={editingMeme}
+        onClose={handleModalClose}
+        onSave={onSave}
+      />
+    </>
   );
 }

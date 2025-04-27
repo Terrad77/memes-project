@@ -1,17 +1,16 @@
 // components/EditMemeForm.jsx
 import { useState } from "react";
-import { Form, Input, Button, Modal } from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 import { Meme } from "../types/memeTypes";
 
 interface Props {
   meme: Meme; // Объект мема для редактирования
   onSave: (meme: Meme) => void; // Функция сохранения
   onClose: () => void; // Функция закрытия
-  isOpen: boolean; // Открыто ли модальное окно
 }
 
 // Define the Meme type
-export default function MemeForm({ meme, onSave, onClose, isOpen }: Props) {
+export default function MemeForm({ meme, onSave, onClose }: Props) {
   const [title, setTitle] = useState(meme.title);
   const [likes, setLikes] = useState(String(meme.likes));
   const [image, setImage] = useState(meme.image);

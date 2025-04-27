@@ -3,33 +3,25 @@ import { Meme } from "../types/memeTypes";
 import MemeForm from "./MemeForm";
 
 interface EditModalProps {
-  meme: Meme;
-  isOpen: boolean;
+  meme: Meme | null;
   onClose: () => void;
-  onSave: (meme: Meme) => void;
+  onSave: (updatedMeme: Meme) => void;
 }
 
-export default function EditModal({
-  meme,
-  isOpen,
-  onClose,
-  onSave,
-}: EditModalProps) {
+export default function EditModal({ meme, onClose, onSave }: EditModalProps) {
+  if (!meme) return null;
+
   const handleSubmit = (data: Omit<Meme, "id">) => {
     onSave({ id: meme.id, ...data });
+    onClose();
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="lg">
+    <Modal isOpen onClose={onClose} size="lg">
       <ModalContent>
         <ModalHeader>Edit meme</ModalHeader>
         <ModalBody>
-          <MemeForm
-            meme={meme}
-            onSave={handleSubmit}
-            onClose={onClose}
-            isOpen
-          />
+          <MemeForm meme={meme} onSave={handleSubmit} onClose={onClose} />
         </ModalBody>
       </ModalContent>
     </Modal>
