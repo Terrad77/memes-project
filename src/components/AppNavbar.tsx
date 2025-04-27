@@ -30,11 +30,11 @@ const AppNavbar = () => {
       onMenuOpenChange={setIsMenuOpen}
     >
       {/* Brand & Logo*/}
-      <NavbarBrand>
-        <div className="flex items-center gap-2">
-          <span className="text-xl text-primary">¯\_(ツ)_/¯</span>
+      <NavbarBrand className="text-primary">
+        <div className="flex items-center gap-1 ">
+          <span className="text-xl ">¯\_(ツ)_/¯</span>
           <p className="text-lg font-bold md:text-xl">
-            <span className="text-primary">Meme</span> Guide
+            <span className="text-primary-300">Meme</span> Guide
           </p>
         </div>
       </NavbarBrand>

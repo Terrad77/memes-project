@@ -9,7 +9,7 @@ export const defaultMemes: Meme[] = [
   },
   {
     id: 2,
-    title: "1080p 4k 1920x1080 HD Double-D Mega Titty...",
+    title: "1080p 4k 1920x1080 HD Double-D Mega Titty",
     image: "https://i.imgur.com/OtF2Deq.jpeg",
     likes: Math.floor(Math.random() * 100),
   },
@@ -27,7 +27,7 @@ export const defaultMemes: Meme[] = [
   },
   {
     id: 5,
-    title: "giant monster wallpaper",
+    title: "Giant monster wallpaper",
     image: "https://i.imgur.com/Tpq7jIQ.jpeg",
     likes: Math.floor(Math.random() * 100),
   },
