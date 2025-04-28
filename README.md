@@ -1,3 +1,3 @@
 # memes-project
 
-Memes Guide App – popular memes guide on React + HeroUI
+Memes Guide App – popular memes guide on React + Vite + HeroUI
